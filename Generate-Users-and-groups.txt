@@ -1,0 +1,67 @@
+$Users = Import-Csv ".\100TestUsers.csv"
+
+$users = Get-Random -InputObject $Users -Count 50
+
+$UPNSuffix = "@testdomain.com"
+
+$departments = (                             # Departments and associated job titles to assign to the users
+                  @{"Name" = "Finance & Accounting"; Positions = ("Manager", "Accountant", "Data Entry")},
+                  @{"Name" = "Human Resources"; Positions = ("Manager", "Administrator", "Officer", "Coordinator")},
+                  @{"Name" = "Sales"; Positions = ("Manager", "Representative", "Consultant")},
+                  @{"Name" = "Marketing"; Positions = ("Manager", "Coordinator", "Assistant", "Specialist")},
+                  @{"Name" = "Engineering"; Positions = ("Manager", "Engineer", "Scientist")},
+                  @{"Name" = "Consulting"; Positions = ("Manager", "Consultant")},
+                  @{"Name" = "IT"; Positions = ("Manager", "Engineer", "Technician")},
+                  @{"Name" = "Planning"; Positions = ("Manager", "Engineer")},
+                  @{"Name" = "Contracts"; Positions = ("Manager", "Coordinator", "Clerk")},
+                  @{"Name" = "Purchasing"; Positions = ("Manager", "Coordinator", "Clerk", "Purchaser")}
+
+                  )
+
+foreach ($User in $Users){
+
+    $Department = Get-Random -InputObject $Departments -Count 1
+    $Title = Get-Random -InputObject $Department.Positions -Count 1
+
+    $UserDisplayName = $User."First Name" + " " + $User."Last Name"
+    $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+    $PasswordProfile.Password = "\<Password\>"
+
+    New-AzureADUser -DisplayName $UserDisplayName -GivenName $User."First Name" -Surname $User."Last Name" -PasswordProfile $PasswordProfile -UserPrincipalName ($User."First Name" + $UPNSuffix) -AccountEnabled $true -MailNickName $User."User Name" -State $User.State -Mobile $User."Phone No." `
+    -City $User.City -PostalCode $User.Zip -CompanyName "Test User" -Department $Department.Name -JobTitle $Title 
+}
+
+#Create AD GROUPs
+foreach($Department in $Departments){
+    New-AzureADGroup -DisplayName $Department.Name -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet" -Description "Test Azure Group"
+}
+
+#Populate AD Groups
+$TestUsers = Get-AzureADUser | Where-Object {$_.CompanyName -eq "Test User"}
+$TestAdGroups = Get-AzureADGroup | Where-Object {$_.Description -eq "Test Azure Group"} 
+
+$GeneralGroup = Get-AzureADGroup -ObjectId "eeccaad3-b5be-48ba-8d07-fe411ce83220"
+
+foreach ($TestAdGroup in $TestAdGroups){
+
+    foreach($TestUser in $TestUsers){
+
+        if($TestAdGroup.DisplayName -match $TestUser.Department){
+            Add-AzureADGroupMember -ObjectId $TestAdGroup.ObjectId -RefObjectId $TestUser.ObjectId
+            Add-AzureADGroupMember -ObjectId $GeneralGroup.ObjectId -RefObjectId $TestUser.ObjectId
+        }
+    }
+}
+
+###MISC COMMANDS
+
+#Get all test accounts
+Get-AzureADUser | Where-Object {$_.CompanyName -eq "Test User"} 
+
+
+#Clean Up test accounts 
+Get-AzureADUser | Where-Object {$_.CompanyName -eq "Test User"} | ForEach-Object {Remove-AzureADUser -ObjectId $_.ObjectId}
+
+
+#Clean up AD Groups
+Get-AzureADGroup | Where-Object {$_.Description -eq "Test Azure Group"}  | ForEach-Object {Remove-AzADGroup -ObjectId $_.ObjectId -Force} 

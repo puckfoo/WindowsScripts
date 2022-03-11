@@ -1,0 +1,1 @@
+﻿“WinRM quickconfig -transport:https -quiet”
