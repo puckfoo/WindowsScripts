@@ -1,4 +1,4 @@
-﻿Function Get-UMBGC {
+﻿Function Get-GC {
     [CmdletBinding()]
     $LocalSite = (Get-ADDomainController -Discover).Site
     $NewTargetGC = Get-ADDomainController -Discover -Service 6 -SiteName $LocalSite
@@ -14,7 +14,7 @@
 
 
 
-Function Search-UMBADGroup {
+Function Search-ADGroup {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
@@ -27,14 +27,14 @@ Function Search-UMBADGroup {
 }
 
 
-Search-UMBADGroup 'servercert'
+Search-ADGroup 'servercert'
 
 
 
 
 
 
-Function Get-UMBADGroupMembership {
+Function Get-ADGroupMembership {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
@@ -59,7 +59,7 @@ Function Get-UMBADGroupMembership {
     }
 }
 
-Get-UMBADGroupMembership servercert
+Get-ADGroupMembership servercert
 
 
 
@@ -71,7 +71,7 @@ Get-UMBADGroupMembership servercert
 
 
 
-Function Add-UMBUsersToADGroup {
+Function Add-UsersToADGroup {
   [CmdletBinding(DefaultParameterSetName = 'UserNames')]
     param (
         [Parameter(Mandatory = $true,
@@ -85,7 +85,7 @@ Function Add-UMBUsersToADGroup {
         [string]$SecurityGroup
     )
 
-    $dc = Get-UMBGC
+    $dc = Get-UGC
 
     try 
     {
@@ -133,7 +133,7 @@ Function Add-UMBUsersToADGroup {
 
 
 
-Add-UMBUsersToADGroup -UserNames bbaggins -SecurityGroup test
+Add-UsersToADGroup -UserNames bbaggins -SecurityGroup test
 
 
 
@@ -141,7 +141,7 @@ Add-UMBUsersToADGroup -UserNames bbaggins -SecurityGroup test
 
 
 
-Function Remove-UMBUsersFromADGroup {
+Function Remove-UsersFromADGroup {
     [CmdletBinding(DefaultParameterSetName = 'UserNames')]
     param (
         [Parameter(Mandatory = $true,
@@ -156,7 +156,7 @@ Function Remove-UMBUsersFromADGroup {
     )
 
 
-    $dc = Get-UMBGC
+    $dc = Get-GC
 
     $GetSecGroup = Get-ADObject -Filter {(ObjectClass -eq "group") -and (SamAccountName -eq $SecurityGroup)} -Properties SamAccountName, DistinguishedName
     $SecGroup = ($GetSecGroup).SamAccountName
@@ -195,7 +195,7 @@ Function Remove-UMBUsersFromADGroup {
 
 
 
-Remove-UMBUsersFromADGroup -UserNames bbaggins -SecurityGroup test
+Remove-UsersFromADGroup -UserNames bbaggins -SecurityGroup test
 
 
 
@@ -204,7 +204,7 @@ Remove-UMBUsersFromADGroup -UserNames bbaggins -SecurityGroup test
 
 
 
-Function Get-UMBADUserGroupMembership {
+Function Get-ADUserGroupMembership {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
@@ -225,7 +225,7 @@ Function Get-UMBADUserGroupMembership {
 }
 
 
-Get-UMBADUserGroupMembership -User rholland
+Get-ADUserGroupMembership -User 
 
 
 
@@ -234,7 +234,7 @@ Get-UMBADUserGroupMembership -User rholland
 
 
 
-Function Add-UMBUsersToDistributionGroup {
+Function Add-UsersToDistributionGroup {
   [CmdletBinding(DefaultParameterSetName = 'UserNames')]
     param (
         [Parameter(Mandatory = $true,
@@ -248,7 +248,7 @@ Function Add-UMBUsersToDistributionGroup {
         [string]$DistributionGroup
     )
 
-    $dc = Get-UMBGC
+    $dc = Get-GC
 
     try 
     {
