@@ -9,9 +9,9 @@ Resources:
           Value: !Join [ " ", [EC2, Instance, with, Fn, Join ] ]
       SecurityGroups:
         - !Ref MySecurityGroup
-    MySecurityGroup:
-      Type: 'AWS::EC2::SecurityGroup'
-      Properties:
+  MySecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
       GroupDescription: Enable SSH access via port 22
       SecurityGroupIngress:
         - IpProtocol: tcp
