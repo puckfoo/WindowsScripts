@@ -3,4 +3,4 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       InstanceType: t3.large
-      ImageId: ami-05912b6333beaa478  #Windows 19
+      ImageId: ami-05e2b7014cc33b105  #Windows 16 base
