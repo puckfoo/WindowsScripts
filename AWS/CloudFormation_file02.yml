@@ -1,0 +1,6 @@
+Resources:
+  Ec2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: t3.large
+      ImageId: ami-05912b6333beaa478  #Windows 19
