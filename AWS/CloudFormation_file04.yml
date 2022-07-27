@@ -5,12 +5,11 @@ Resources:
       InstanceType: t3.large
       SubnetId: "subnet-0c99aca4ee6192a3b"
       ImageId: ami-05e2b7014cc33b105  #Windows 16 base
+      KeyName: ServerKeys
+      Tags:
+        - Key: "Name"
+          Value: "Server2016"
 Mappings:
   AWSRegion2AMI:
     us-east-1:
       Windows2016: ami-05e2b7014cc33b105 
-
-
-
-
-
