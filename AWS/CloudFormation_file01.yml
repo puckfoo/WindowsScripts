@@ -2,20 +2,23 @@ Resources:
   Ec2Instance:
     Type: "AWS::EC2::Instance"
     Properties:
-      InstanceType: t2.micro
-      ImageId: ami-052efd3df9dad4825  #ubuntu
+      InstanceType: t3.xlarge
+      ImageId: ami-06686d3646ac2170a  #EC2LaunchV2-Windows_Server 2016 
+      KeyName: ServerKeys
       Tags:
         - Key: "Name"
-          Value: !Join [ " ", [EC2, Instance, with, Fn, Join ] ]
+          Value: "aszwin201601"
       SecurityGroups:
         - !Ref MySecurityGroup
   MySecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
-      GroupDescription: Enable SSH access via port 22
+      GroupDescription: "AWSServerAccess"
+      GroupName: "Server RDP Access"
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: 0.0.0.0/0
+          FromPort: '3389'
+          ToPort: '3389'
+          CidrIp: 172.31.0.0/16
+
                 
