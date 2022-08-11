@@ -1,0 +1,12 @@
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: ami-06686d3646ac2170a 
+      InstanceType: t3.xlarge
+      SubnetId: subnet-005f149f6c272931d
+      SecurityGroupIds:
+            - !GetAtt "mysecgroup.sg-0b65f6b78bcb4d60b"
+      KeyName: ServerKeys
+      SubnetId: !Ref mysubnet01
+
