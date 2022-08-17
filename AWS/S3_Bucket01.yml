@@ -1,0 +1,23 @@
+WebsiteBucket:
+  Type: AWS::S3::Bucket
+  Properties:
+    AccessControl: Private
+    BucketEncryption:
+      ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm:  AES256
+
+BucketPolicy:
+  Type: AWS::S3::BucketPolicy
+  Properties:
+    Bucket: { Ref: WebsiteBucket }
+    PolicyDocument:
+      Version: "2012-10-17"
+      Statement:
+        Effect: Allow
+        Principal: "*"
+        Action:
+          - s3:GetObject
+        Resource:
+          - !Join: ["", ["arn:aws:s3:::", !Ref WebsiteBucket ]]
+          - !Join: ["", ["arn:aws:s3:::", !Ref WebsiteBucket, "/*" ]]
