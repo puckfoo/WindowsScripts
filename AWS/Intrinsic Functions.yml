@@ -2,7 +2,7 @@ Resources:
   SomeBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: Dufresne
+      BucketName: dufresne125
 Outputs:
   WhoEscapedShawshank:
-    Vaule: !Join [" ", ["Andy", !Ref  SomeBucket]]
+    Value: !Join [" ", ["Andy", !Ref  SomeBucket]]
