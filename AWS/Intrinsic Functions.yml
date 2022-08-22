@@ -1,0 +1,8 @@
+Resources:
+  SomeBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: Dufresne
+Outputs:
+  WhoEscapedShawshank:
+    Vaule: !Join [" ", ["Andy", !Ref  SomeBucket]]
