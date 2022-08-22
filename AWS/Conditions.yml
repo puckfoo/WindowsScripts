@@ -1,0 +1,18 @@
+Parameters:
+  EnvParam:
+    Description: Environment
+    Type: String
+    Default: dev
+    AllowedValues:
+      - prod
+      - dev
+Conditions:
+  isProd:  !Equals [!Ref EnvParam, prod]
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Condition: isProd
+Outputs:
+  ProdBucket:
+    Vaule: !If [isProd, !Ref Bucket, otherbucket];
+    Description: Production Bucket 
