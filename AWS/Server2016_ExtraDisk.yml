@@ -1,8 +1,4 @@
 Parameters:
-  DiskSize:
-    Description: Disk size in GB
-    Type: Number
-    Default: 50
   ImageId:
     Type: String
     Description: 'Window Server 2016'
@@ -32,8 +28,6 @@ Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      VolumeType: gp3
-      Size: !Ref DiskSize
       ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType 
       AvailabilityZone: !Ref AvailabilityZone
