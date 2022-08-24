@@ -1,0 +1,109 @@
+Parameters:
+  ImageId:
+    Type: String
+    Description: 'Window Server 2016'
+    Default: 'ami-0c03cdde39b9df76d'
+  VpcId:
+    Type: String
+    Description: VPC Id
+    Default: 'vpc-0f7f29e80efea7098'
+  SubnetId:
+    Type: String
+    Description: Subnet in which to launch an EC2
+    Default: subnet-05c775409edd85e5d
+  AvailabilityZone:
+    Type: String
+    Description: Availability Zone into which instance will launch
+    Default: us-east-2a
+  InstanceType:
+    Type: String
+    Description: Choose t3.xlarge 
+    Default: t3.xlarge
+  KeyName:
+    Description: RDP Keypair to login to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: AWS-DEV-DC's
+
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType 
+      AvailabilityZone: !Ref AvailabilityZone
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !GetAtt ServerAccess.GroupId
+      SubnetId: !Ref SubnetId
+
+  ServerAccess:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Standard Access
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+          - IpProtocol: tcp
+            FromPort: 123
+            ToPort: 123
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 445
+            ToPort: 445
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 88
+            ToPort: 88
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 3389
+            ToPort: 3389
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 9389
+            ToPort: 9389
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 464
+            ToPort: 464
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: udp
+            FromPort: 123
+            ToPort: 123
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 135
+            ToPort: 135
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: udp
+            FromPort: 464   
+            ToPort: 464
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 45152
+            ToPort: 65535
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: udp
+            FromPort: 389   
+            ToPort: 389
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: udp
+            FromPort: 3268 
+            ToPort: 3268
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: udp
+            FromPort: 88 
+            ToPort: 88
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 3268  
+            ToPort: 3269
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 636  
+            ToPort: 636
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 389  
+            ToPort: 389
+            CidrIp: 0.0.0.0/0
+      
