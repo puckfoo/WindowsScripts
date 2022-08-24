@@ -35,11 +35,7 @@ Resources:
       SecurityGroupIds:
         - !GetAtt ServerAccess.GroupId
       SubnetId: !Ref SubnetId
-      Tags:
-        -
-          Key: Server2016
-          Value: FileServer
-
+     
   ServerAccess:
     Type: AWS::EC2::SecurityGroup
     Properties:
