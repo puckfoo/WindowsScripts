@@ -10,7 +10,7 @@ Install-ADDSDomainController `
   -CreateDnsDelegation:$false `
   -CriticalReplicationOnly:$false `
   -DatabasePath "E:\NTDS" `
-  -DomainName "qa.umb.com" `   #change domain
+  -DomainName "mummra.net" `   #change domain
   -InstallDns:$false `
   -LogPath "F:\NTDS" `
   -NoRebootOnCompletion:$false `
