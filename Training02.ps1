@@ -45,4 +45,56 @@ $number = 1
 While ($number -le 10) {$number; $number++}
 
 #Exit Loop - "Do-While Loop"
-Do {$number; $number++} While($number -le 10)
+Do { $number; $number++} While($number -le 10)
+
+<#
+The Do-While loop is almost the same as a regular Loop
+    it executes the block of statements while the condition returns true
+    Do-while executes first; then, the condition test is at the end of the loop
+#>
+
+#Base Syntax
+$number = 1
+Do { $number; $number++} While ($number -le 20)
+
+<#
+
+While Loop
+a. Entry Controlled Loop
+b. Tests the condition before the exection of the first interation
+c. Loop doesn't execute when the conition evaluates too false.
+d. It does not require any other syntax
+
+
+Do-While Loop
+a. Exit Controlled loop
+b. Tests the condition after the exectuion of the first iteration
+c. Loop executes at least once even if the condition evaluates too false
+d. Use the DO keyword at the starting of the loop, and the while keyword with the condition at the end of the loop
+
+
+Do-Unil Loop
+a. Do-until loops use similar syntax to Do-While loops
+b. The loop repeats until the condition returns true
+c. They are the opposite of Do-While loops
+
+#>
+
+#Base Syntax
+$number = 1
+Do { $number; $number++ } Until ($number -le 10) 
+
+<#
+Do-While and Do-Unil Loop Differences
+
+Do-While Loop
+a. Exit Controlled Loop
+b. Uses the While keyword for the condition
+c. Executes while the condition returns true
+
+Do-Until Loop
+a. Exit Controlled Loop
+b. Uses the Until keyword for the condition
+c. Continues execution until the condition returns true
+
+#>
