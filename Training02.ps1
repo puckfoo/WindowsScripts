@@ -110,3 +110,11 @@ b. Uses the Until keyword for the condition
 c. Continues execution until the condition returns true
 
 #>
+
+$number = 1
+Do { $number; $number++} While ($number -le 10)
+
+
+Do { $number; $number++} Until($number -gt 10)
+
+Do { $number; $number++} Until($number -le 10) # endless loop
