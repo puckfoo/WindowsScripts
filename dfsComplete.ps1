@@ -21,6 +21,13 @@ Funciton ServerPairs {
             'ny4file10'
         }
     }
+
+    $results = [PSCustomObject]@{
+        Primary = $NearSide
+        Secondary = $FarSide
+    }
+
+    return $results
 }
 
 
