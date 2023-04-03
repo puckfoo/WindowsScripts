@@ -37,9 +37,5 @@ Switch ($number) {
     10 {Write-Host "Number equals 10"}
     20 {Write-Host "Number equals 20"}
     Default {Write-Host "Number is not equal to 5, 10, or 20"}
-
-
-
-
 }
 
