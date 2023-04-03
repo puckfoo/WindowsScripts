@@ -8,3 +8,4 @@ $textVariable = $true
 
 
 ($textVariable) ? "Vaule is true" : "Value is false"
+
