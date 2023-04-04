@@ -60,16 +60,26 @@ Switch (<expression1>, <expression2>) {
 #Variable
 $number1 = 5
 $number2 = 11
+$number3 = 30
 
 #Example Syntax
-Switch ($number1, $number2) {
+Switch ($number1, $number2, $number3) {
     5   { Write-Host "5" }
     10  { Write-Host "10" }
     20  { Write-Host "20" }
+    30  { Write-Host "30"}
     Default { Write-Host "Default" }
 }
+
+<# This is the output of above script
+5
+Default
+30
+#>
+
 
 #First a comparison, does $number1 equal 5, "yes", does $number2 equal 5, "no" so the first matches but not the second one.
 #Next line, next comparison.  Does $number1 equal 10, "no", does $number2 equal 10, "no", drops down to default
 #Next line, next comparison.  Does $number1 equal 20, "no", does $number2 equal 20, "no", drops down to default
+#Next line, next comparison.  Skipping the first three and moving on to "30". Does "30" match, "yes"
  
