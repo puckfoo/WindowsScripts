@@ -59,14 +59,14 @@ Switch (<expression1>, <expression2>) {
 
 #Variable
 $number1 = 5
-$number2 = 20
+$number2 = 11
 
 #Example Syntax
 Switch ($number1, $number2) {
-    5   {Write-Host "5"}
-    10  {Write-Host "10"}
-    20  {Write-Host "20"}
-    Default {Write-Host "Default"}
+    5   { Write-Host "5" }
+    10  { Write-Host "10" }
+    20  { Write-Host "20" }
+    Default { Write-Host "Default" }
 }
 
 #First a comparison, does $number1 equal 5, "yes", does $number2 equal 5, "no" so the first matches the second drops to default
