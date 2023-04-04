@@ -69,5 +69,7 @@ Switch ($number1, $number2) {
     Default { Write-Host "Default" }
 }
 
-#First a comparison, does $number1 equal 5, "yes", does $number2 equal 5, "no" so the first matches the second drops to default
+#First a comparison, does $number1 equal 5, "yes", does $number2 equal 5, "no" so the first matches but not the second one.
+#Next line, next comparison.  Does $number1 equal 10, "no", does $number2 equal 10, "no", drops down to default
+#Next line, next comparison.  Does $number1 equal 20, "no", does $number2 equal 20, "no", drops down to default
  
