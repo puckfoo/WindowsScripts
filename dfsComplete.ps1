@@ -20,8 +20,6 @@ Funciton ServerPairs {
         { $PSItem -eq 'chfile10'} {
             'ny4file10'
         }
-        
-        Default $FarSide
     }
 
     $results = [PSCustomObject]@{
