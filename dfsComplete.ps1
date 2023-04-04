@@ -4,7 +4,7 @@ Funciton ServerPairs {
         [string]$NearSide = $env:COMPUTERNAME       
     )
     
-    $FarSide = switch ( $NearSide) {
+    $FarSide = switch ( $NearSide ) {
         { $PSItem -eq 'chfile03' } {
             'ny4file04'
         }
@@ -14,12 +14,14 @@ Funciton ServerPairs {
         { $PSItem -eq 'chfile07'} {
             'ny4file07'
         }
-        {$PSItem -eq 'ch2file08'} {
+        { $PSItem -eq 'ch2file08'} {
             'ny4file08'
         }
         { $PSItem -eq 'chfile10'} {
             'ny4file10'
         }
+        
+        Default $FarSide
     }
 
     $results = [PSCustomObject]@{
