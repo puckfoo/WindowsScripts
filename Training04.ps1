@@ -53,8 +53,8 @@ $variablesplit.Split(',').Split(';')
 
 #Padding:
 
-$pat1 = "Demonstration"
-$pat2 = "Demonstration"
+$pad1 = "Demonstration"
+$pad2 = "Demonstration"
 
 $pad1.PadLeft(14,'Added') 
 
