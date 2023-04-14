@@ -27,3 +27,19 @@ $variable2 -replace "([a-z]+)\s([a-z]+)",'$2 $1'
 
 $variable2 -replace '[^a-z]'
 
+
+########################################################################################################
+
+Split:
+
+-split "Jan Feb Mar Apr May Jun"
+
+"Jan,Feb,Mar,Apr,May,Jun" -split ","
+
+$months = "Jan,Feb,Mar,Apr,May,Jun" -split ","
+
+$months = "Jan,Feb,Mar,Apr,May,Jun" -split ",",3
+
+
+
+
