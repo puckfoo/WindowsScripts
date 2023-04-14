@@ -57,11 +57,14 @@ $pad1 = "Demonstration"
 $pad2 = "Demonstration"
 
 $pad1.PadLeft(14,'Added') 
-
-#This errors because you can't add a word 'Added', but you can add a characer 'A'. Example below.
+# MethodException: Cannot convert argument "paddingChar", with value: "Added", for "PadLeft" to type "System.Char": "Cannot convert value "Added" to type "System.Char". Error: "String must be exactly one character long.""
+# This errors because you can't add a word 'Added', but you can add a characer 'A'. Example below.
 
 $pad1.PadLeft(14,'A') 
+# output = ADemonstration
 
+$pad1.PadRight(14,'B')
+# output = DemonstrationB
 
 
 
