@@ -47,6 +47,78 @@ for ($item = 0; $item -lt $variable02.count; $item++) {
 
 
 
+<#
+Hashtables
+
+What are Hashtables?
+
+A Hashtable is a data structure like an Array, except you store every value (object) using a key.  Hashtables only contian values not properties.  They are basic key/value stores.
+
+1. Also known as a dictionary or associative array
+2. Data structure that stores one or more key/value pairs
+3. Keys and values in hash tables are define as .net objects
+4. Efficient way for finding and retrieving data
+
+
+Creating Hashtables
+1. Start the hash table with an at-sign (@)
+2. Wrap the hash table in braces ({})
+3. Use an equal sign (=) to separate each key from its value
+4. Use a semicolon (;) or a line break to searate the key/value pairs
+
+#>
+
+#Create an Empty Hashtable
+$variable = @{}
+
+#Create a Hashtable with Keys and Values
+$variable = @{ Month = 5; Name = "May"; Season = "Spring" }
+
+#Create an Ordered Hashtable with Keys and Values
+$variable = [ordered]@{ Month =5; Name = "May"; Season = "Spring" }
+
+
+$variable = @{
+    China = 1439323776;
+    India = 1380004385;
+    America = 331002651;
+    Spain = 46754778
+}
+
+$variable
+
+$variable.Keys
+
+foreach ($key in $variable.Keys) {
+    $output = '{0} has a population of {1}' -f $_,$variable[$_];
+    Write-Host $output
+}
+
+
+# $_ can't be returned in a foreach statement. In a foreach statement, we have to use the named object
+
+
+# This is the proper way
+foreach ($key in $variable.Keys) {
+    $output = '{0} has a population of {1}' -f $key,$variable[$key];  # $key is the named $object
+    Write-Host $output
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
