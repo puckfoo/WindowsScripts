@@ -111,12 +111,36 @@ Write-Host $output}
 
 
 
+#PSCustomObject
+
 $variable = [PSCustomObject]@{
     China = 1439323776;
     India = 1380004385;
     America = 331002651;
     Spain = 46754778
 }
+
+$variable | Add-Member -MemberType NoteProperty -Name 'Russia' -Value '145934462'  #add member to pscustom object
+
+$variable
+
+
+$variable | Add-Member -MemberType NoteProperty -Name 'Norway' -Value '5421241'  #add member to pscustom object
+
+$variable
+
+<# output
+China   : 1439323776
+India   : 1380004385
+America : 331002651
+Spain   : 46754778
+Russia  : 145934462
+Norway  : 5421241
+#>
+
+$variable.China
+$variable.Norway
+
 
 
 
