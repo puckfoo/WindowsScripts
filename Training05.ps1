@@ -104,6 +104,19 @@ foreach ($key in $variable.Keys) {
     Write-Host $output
 }
 
+#Samething but this time foreach-object
+$variable.Keys | ForEach-Object {
+$output = '{0} has a population of {1}' -f $_,$variable[$_] 
+Write-Host $output}
+
+
+
+$variable = [PSCustomObject]@{
+    China = 1439323776;
+    India = 1380004385;
+    America = 331002651;
+    Spain = 46754778
+}
 
 
 
