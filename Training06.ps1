@@ -42,6 +42,27 @@ $xml.Countries.Country.Population
 
 
 
+<#
+Steps for Iterating through XML Data
 
+1. Read File and Cast to XML Object
+2. Iterate through XML Data
+3. Return Results
+
+#>
+
+# Define Variables
+$path = "C:\Users\Richard Holland\Documents\Data\Countries-Checked.xml"
+
+# Load
+[xml]$xml = Get-Content -Path $path
+$xml.Countries.Country | Where-Object Validated -eq 'True' | `
+ForEach-Object {
+    [PSCustomObject]@{
+    Name = $_.State
+    Population = $_.Population
+    Langauge = $_.Langauge
+    }
+}
 
 
