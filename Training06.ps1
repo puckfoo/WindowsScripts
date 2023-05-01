@@ -66,3 +66,13 @@ ForEach-Object {
 }
 
 
+
+
+<#
+Import, Export and Test Json
+
+#>
+
+#Variables
+
+$path = "C:\Users\Richard Holland\Documents\Data\Countries.json"
