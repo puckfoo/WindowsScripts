@@ -46,5 +46,24 @@ function  New-Error {
 New-Error
 
 
+#Generate Error using "-ErrorAction"
+New-Error -ErrorAction stop
+
+
+<#
+    The -ErrorAction Parameter Values
+
+    Contine - Log's error, then displays error to console, and continues processing
+    Stop - Log's error, then displays error to console, and then terminates
+    SilentlyContinue - Log's error, does not display error, and continues processing
+    Ignore - Does not log error.  Does not display error, and continues processing
+
+
+#>
+
+
+
+
+
 
 
