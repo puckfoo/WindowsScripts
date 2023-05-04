@@ -37,9 +37,10 @@ Write-Error -Message "This is an Error"  -ErrorAction Stop
 function  New-Error {
     $number = 0;
     for ($i = 1; $i -le 10; $i++) {
-        Write-Host "The current number is: $i"
+        Write-Host "The current number is: $i" 
         Throw "This in an Error"
         $number += $i
+
     }
 }
 
@@ -62,7 +63,43 @@ New-Error -ErrorAction stop
 #>
 
 
+function  New-Error {
+    $number = 0;
+    for ($i = 1; $i -le 10; $i++) {
+        Write-Host "The current number is: $i"
+        Write-Error -Message "Error" -ErrorAction SilentlyContinue #continues regardless of error
+        $number += $i
+    }
+}
 
+New-Error
+
+
+
+
+function  New-Error {
+    $number = 0;
+    for ($i = 1; $i -le 10; $i++) {
+        Write-Host "The current number is: $i"
+        Write-Error -Message "Error" -ErrorAction Suspend  #The suspend action isn't usable here.
+        $number += $i
+    }
+}
+
+New-Error
+
+
+
+function  New-Error {
+    $number = 0;
+    for ($i = 1; $i -le 10; $i++) {
+        Write-Host "The current number is: $i"
+        Write-Error -Message "Error" -ErrorAction Stop  #Stops after the first error
+        $number += $i
+    }
+}
+
+New-Error
 
 
 
