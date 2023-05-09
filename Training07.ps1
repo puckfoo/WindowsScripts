@@ -103,4 +103,82 @@ New-Error
 
 
 
+try {
+    New-Message
+}finally {
+    Write-Output "Continue Execution"
 
+}
+
+
+
+try {
+    New-Message
+} catch {
+    Write-Output "An Exeption was Generated"
+} finally {
+    Write-Output "Continue Execution"
+}
+
+<#
+Typed Exception Handling
+
+1. Exceptions have a type. You can specify the type of exception you need to catch
+2. Catch multiple exception types with a single try/catch statement
+
+#>
+
+
+$path = "C:\Users\Richard Holland\Documents\Code"
+
+try{
+    New-Error -Path $path -ErrorAction Stop
+}
+catch [System.IO.DirectoryNotFoundException],[System.IO.FileNotFoundException]{
+    Write-Output "The Path or File was not found: [$path]"
+}
+catch [System.IO.IOException] {
+    Write-Output "Error within the selected file: [$path]"
+}
+
+
+function New-Error {
+    Throw "New Error"
+}
+
+New-Error
+
+
+Try{
+    New-Error   
+}
+catch{
+    Write-Host "An Error Occured"
+}
+
+
+function New-Error {
+    Throw [System.IO.FileNotFoundException] "File not found"
+}
+
+New-Error
+
+
+try {
+    {New-Error}
+}
+catch{
+    Write-Host $_ 
+    $_.GetType().FullName
+    $_.Exception
+    $_.Exception.GetType().FullName
+    $_.Exception.Message
+}
+
+
+try {
+    New-Error
+}
+catch{
+    [System.IO.FileNotFoundException]
+}
