@@ -188,3 +188,15 @@ catch{
 catch [System.IO.IOException] {
     Write-Host "Catch02"
 }
+
+
+function New-Error([string]$type){
+    switch ($type) {
+        A { throw [System.FileNotFoundException] "File Not Found Exception" }
+        B { throw [System.IO.IOException] "IO Exception"}
+        C { throw [System.Exception] "Standard Exception"}
+        default { throw [System.Exception] "Standard Error"}     
+    }
+} 
+
+New-Error -type C
