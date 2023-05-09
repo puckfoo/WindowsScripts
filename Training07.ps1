@@ -176,9 +176,15 @@ catch{
 }
 
 
+
+
 try {
     New-Error
 }
 catch{
-    [System.IO.FileNotFoundException]
+    [System.IO.FileNotFoundException]{
+        Write-Host "Catch01"
+    }
+catch [System.IO.IOException] {
+    Write-Host "Catch02"
 }
