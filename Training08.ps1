@@ -19,19 +19,24 @@ Certficate Types
 
 
 #Set the PowerShell Script Path
-$script = "C:\Users\Richard Holland\OneDrive\scripts"
+$script = "C:\Users\Richard Holland\OneDrive\scripts\scrip"
 
 #Create Self-Signed code Signing Certificate
 New-SelfSignedCertificate -DnsName "script.company.com" -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject "PowerShell Code Signing Certfictate"
 
 #Retreive the Code Signing Certficate
-$certificate = (Get-ChildItem Cert:\CurrentUser\My -CodeSigningCert) [0]
+$certificate = (Get-ChildItem Cert:\CurrentUser\My -CodeSigningCert)[0]
 
 #Set the Code Signing Certficate for the PowerShell Script
 Set-AuthenticodeSignature $script -Certificate $certificate
 
 #Validate the Code Signing Certificate
 Get-AuthenticodeSignature $script | Format-Table -AutoSize
+
+
+
+
+
 
 
 
