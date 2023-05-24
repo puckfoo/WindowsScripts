@@ -19,7 +19,7 @@ Certficate Types
 
 
 #Set the PowerShell Script Path
-$script = "C:\Users\Richard Holland\OneDrive\scripts\script"
+$script = "C:\Users\Richard Holland\OneDrive\scripts\script.ps1"
 
 #Create Self-Signed code Signing Certificate
 New-SelfSignedCertificate -DnsName "script.company.com" -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject "PowerShell Code Signing Certfictate"
