@@ -22,7 +22,7 @@ Certficate Types
 $script = "C:\Users\Richard Holland\OneDrive\scripts\script.ps1"
 
 #Create Self-Signed code Signing Certificate
-New-SelfSignedCertificate -DnsName "script.company.com" -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject "PowerShell Code Signing Certfictate"
+New-SelfSignedCertificate -DnsName "script.puckfoo.com" -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject "PowerShell Code Signing Certfictate"
 
 #Retreive the Code Signing Certficate
 $certificate = (Get-ChildItem Cert:\CurrentUser\My -CodeSigningCert)[0]
@@ -32,6 +32,9 @@ Set-AuthenticodeSignature $script -Certificate $certificate
 
 #Validate the Code Signing Certificate
 Get-AuthenticodeSignature $script | Format-Table -AutoSize
+
+
+#Deploy Cert
 
 
 
