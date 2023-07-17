@@ -3,3 +3,6 @@ function Get-Uptime {
     New-TimeSpan -Start $os.LastBootUpTime -End (Get-Date)
 }
 
+Get-Uptime
+
+
