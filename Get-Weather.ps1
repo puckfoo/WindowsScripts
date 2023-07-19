@@ -17,13 +17,13 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Find-Command -Repository PSGallery -Name Get-CurrentWeather
 
 
-Get-Module pester -ListAvailable
+Get-Module Pester -ListAvailable
 
 
 Install-Module Pester -force  #If you get a security error run the one below.
 
 
-Install-Module Pester -force -SkipPublisherCheck
+Install-Module Pester -force -SkipPublisherCheck -sco
 
 
 #>
