@@ -28,7 +28,3 @@ Get-Module pester -ListAvailable
 New-Fixture -name Get-OMCurrentWeather   #This will create the file Get-OMCurrentWeather.ps1, and Get-OMCurrentWeather.Tests.ps1
 
 
-
-function Get-OMCurrentWeather {
-    throw [NotImplementedException]'Get-OMCurrentWeather is not implemented.'
-}

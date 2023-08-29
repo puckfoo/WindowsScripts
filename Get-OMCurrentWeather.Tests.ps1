@@ -7,3 +7,4 @@ Describe "Get-OMCurrentWeather" {
         Get-OMCurrentWeather | Should -Be "YOUR_EXPECTED_VALUE"
     }
 }
+
