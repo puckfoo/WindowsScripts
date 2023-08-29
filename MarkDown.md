@@ -39,3 +39,17 @@ What am I doing?
 ### Third Level Heading
 
 What did Jeff say not to do?
+
+
+
+# Markdown Image Demo
+
+The more you use markdown, the more you'll feel like this:
+
+![Great Gazoo](./gazoo.bmp "The Great Gazoo")
+
+## Online
+
+Here's an online image reference.
+
+![Jeff and Journey](https://jdhitsolutions.github.io/images/IMG_20180512_183611539.jpg)
