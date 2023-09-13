@@ -1,7 +1,7 @@
 function Get-Memory {
     [CmdletBinding()]
     param (
-        $Computername
+        [string[]]$Computername
     )
     
     $PhysicalMemory = Get-WmiObject -class "win32_physicalmemory" -namespace "root\CIMV2" -ComputerName $Computername 
@@ -12,5 +12,4 @@ function Get-Memory {
 
 }
 
-Get-Memory -Computername lxwd-rhol1
 

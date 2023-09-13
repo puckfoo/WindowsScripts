@@ -1,7 +1,3 @@
-#https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/decrypting-the-selection-of-supported-kerberos-encryption-types/ba-p/1628797
-#https://docs.microsoft.com/en-US/troubleshoot/windows-server/windows-security/unsupported-etype-error-accessing-trusted-domain
-
-
 $AES128 = 0x8
 $AES256 = 0X10
 
