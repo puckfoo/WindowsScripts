@@ -1,4 +1,4 @@
-Funciton ServerPairs {
+Function ServerPairs {
     [CmdletBinding()]
     param(
         [string]$NearSide = $env:COMPUTERNAME       
