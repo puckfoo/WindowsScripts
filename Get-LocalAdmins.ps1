@@ -47,7 +47,7 @@ foreach ($item in $csv) {
             $userdn = $userobj.DistinguishedName
         
             foreach ($userobj in $userdn){
-                Get-ADUser -Identity $userobj -Properties * -Server $server | Select GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$ServerName}}, @{Name="Date";Expression={$date}} | Export-Csv $output -Append -NoTypeInformation
+                Get-ADUser -Identity $userobj -Properties * -Server $server | Select-Object GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$ServerName}}, @{Name="Date";Expression={$date}} | Export-Csv $output -Append -NoTypeInformation
                 Write-Host "Working $userobj"
             }
         }
@@ -67,7 +67,7 @@ foreach ($item in $csv) {
 
         if ($localsource -eq "Local"){
             $localaccount = Get-LocalUser -Name $localname -ErrorAction Stop
-            $localaccount | Select GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$ServerName}}, @{Name="Date";Expression={$date}} | Export-Csv $output -Append -NoTypeInformation
+            $localaccount | Select-Object GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$ServerName}}, @{Name="Date";Expression={$date}} | Export-Csv $output -Append -NoTypeInformation
             Write-Host "Working $localaccount" 
         }
     }
