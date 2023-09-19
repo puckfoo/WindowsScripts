@@ -1,4 +1,4 @@
-
+﻿
 $date = Get-Date
 $output = "c:\temp\fileoutput.csv"
 $servers = Get-Content -path "C:\Temp\file.txt"
@@ -73,7 +73,7 @@ foreach ($server in $servers) {
 
             if ($localsource -eq "Local"){
                 $localaccount = Invoke-Command -ComputerName $server -UseSSL -ScriptBlock {Get-LocalUser -Name $Using:localname -ErrorAction Stop}
-                $localaccount | Select-Object GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$Server}}, @{Name="Date";Expression={$date}} #| Export-Csv $output -Append -NoTypeInformation
+                $localaccount | Select GivenName, Surname, Name, SamAccountName, UserPrincipalname, DistinguishedName, Enabled, @{Name="Group";Expression={$Null}}, @{Name="ServerName";Expression={$Server}}, @{Name="Date";Expression={$date}} #| Export-Csv $output -Append -NoTypeInformation
                 Write-Host "Working $localaccount" 
             }
         }
